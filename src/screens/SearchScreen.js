@@ -1,11 +1,14 @@
 import React, { useState, useContext } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import SearchBar from '../components/SearchBar';
+import SearchHistoryList from '../components/SearchHistoryList';
 import { Context as SearchHistoryContext } from '../context/SearchHistoryContext';
+import { Context as SearchResultsContext } from '../context/SearchResultsContext';
 
-const SearchScreen = () => {
+const SearchScreen = ({ navigation }) => {
   const [term, setTerm] = useState('');
-  const { state, searchHistory } = useContext(SearchHistoryContext);
+  const { searchHistory } = useContext(SearchHistoryContext);
+  const { fetchMovies } = useContext(SearchResultsContext);
 
   return (
     <View>
@@ -13,9 +16,13 @@ const SearchScreen = () => {
         term={term}
         onTermChange={setTerm}
         onTermSubmit={() => {
+          fetchMovies(term);
           searchHistory(term);
+          setTerm('');
+          navigation.navigate('SearchResults');
         }}
       />
+      <SearchHistoryList />
     </View>
   );
 };
