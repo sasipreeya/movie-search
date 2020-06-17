@@ -1,7 +1,7 @@
 import createDataContext from './createDataContext';
 import moviesApi from '../api/movies';
 
-const searchReducer = (state, action) => {
+const searchResultsReducer = (state, action) => {
   switch (action.type) {
     case 'search_movies':
       return action.payload;
@@ -20,7 +20,7 @@ const fetchMovies = dispatch => async (searchTerm) => {
 };
 
 export const { Provider, Context } = createDataContext(
-  searchReducer,
+  searchResultsReducer,
   { fetchMovies },
   []
 );
