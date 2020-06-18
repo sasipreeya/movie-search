@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-native-elements';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import SearchScreen from './src/screens/SearchScreen';
@@ -18,9 +19,19 @@ const navigator = createStackNavigator(
   },
   {
     initialRouteName: 'Search',
-    defaultNavigationOptions: {
-      title: 'Movies Search'
-    }
+    defaultNavigationOptions: ({ navigation }) => ({
+      title: 'Movies Search',
+      headerRight: () => (
+        <Button
+          title="Favourite"
+          type="clear"
+          titleStyle={{
+            fontSize: 16
+          }}
+          onPress={() => navigation.navigate('Favourite')}
+        />
+      )
+    })
   }
 );
 
