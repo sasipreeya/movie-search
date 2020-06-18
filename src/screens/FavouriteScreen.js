@@ -1,11 +1,28 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useContext } from 'react';
+import { View, StyleSheet, ScrollView } from 'react-native';
+import MovieItem from '../components/MovieItem';
+import { Context as FavouriteContext } from '../context/FavouriteContext';
 
 const FavouriteScreen = () => {
+  const { state } = useContext(FavouriteContext);
+
   return (
-    <View>
-      <Text>FavouriteScreen</Text>
-    </View>
+    <ScrollView>
+      <View>
+        {
+          state.map((item) => (
+            <MovieItem 
+              movieItem={item} 
+              title={item.title} 
+              release_date={item.release_date} 
+              overview={item.overview} 
+              poster_path={item.poster_path} 
+              key={item.id}
+            />
+          ))
+        }
+      </View>
+    </ScrollView>
   );
 };
 
