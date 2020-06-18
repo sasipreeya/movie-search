@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { Divider, Text } from "react-native-elements";
+import { withNavigation } from 'react-navigation';
 
-const MovieItem = ({ movieItem }) => {
+const MovieItem = ({ movieItem, navigation }) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate('MovieDetail', { item: movieItem })}>
       <View style={{ flexDirection: "row" }}>
         <View style={styles.imagePosition}>
           <Image
@@ -58,4 +59,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MovieItem;
+export default withNavigation(MovieItem);

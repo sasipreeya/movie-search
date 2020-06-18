@@ -1,10 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import MovieDetail from '../components/MovieDetail';
 
-const MovieDetailScreen = () => {
+const MovieDetailScreen = ({ navigation }) => {
+  const movieItem = navigation.getParam('item');
+
   return (
     <View>
-      <Text>MovieDetailScreen</Text>
+      <MovieDetail movieItem={movieItem} />
     </View>
   );
 };
