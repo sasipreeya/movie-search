@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import MovieDetail from '../components/MovieDetail';
+import FavouriteButton from '../components/FavouriteButton';
 
 const MovieDetailScreen = ({ navigation }) => {
   const movieItem = navigation.getParam('item');
@@ -8,6 +9,7 @@ const MovieDetailScreen = ({ navigation }) => {
   return (
     <View>
       <MovieDetail movieItem={movieItem} />
+      <FavouriteButton movieItem={movieItem} />
     </View>
   );
 };

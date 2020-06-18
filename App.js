@@ -26,11 +26,11 @@ SearchStack.navigationOptions = ({ navigation }) => ({
     />
 });
 
-const FavouriteStack = createStackNavigator({
-  Favourite: FavouriteScreen,
+const MovieDetailStack = createStackNavigator({
+  MovieDetail: MovieDetailScreen,
 });
 
-FavouriteStack.navigationOptions = ({ navigation }) => ({
+MovieDetailStack.navigationOptions = ({ navigation }) => ({
   headerRight: () =>
     <Button
       title="Back to Search"
@@ -46,8 +46,8 @@ const navigator = createStackNavigator(
   {
     SearchStack,
     SearchResults: SearchResultsScreen,
-    MovieDetail: MovieDetailScreen,
-    FavouriteStack
+    MovieDetailStack,
+    Favourite: FavouriteScreen
   },
   {
     initialRouteName: 'SearchStack',

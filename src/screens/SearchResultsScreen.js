@@ -5,7 +5,6 @@ import MovieItem from '../components/MovieItem';
 
 const SearchResultsScreen = () => {
   const { state } = useContext(SearchResultsContext);
-  console.log(state);
 
   return (
     <ScrollView>
