@@ -16,7 +16,7 @@ const fetchMovies = dispatch => async (searchTerm) => {
       query: searchTerm
     }
   });
-  dispatch({ type: 'search_movies', payload: response.data });
+  dispatch({ type: 'search_movies', payload: response.data.results });
 };
 
 export const { Provider, Context } = createDataContext(
