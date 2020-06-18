@@ -10,27 +10,33 @@ import { Provider as SearchResultsProvider } from './src/context/SearchResultsCo
 import { Provider as SearchHistoryProvider } from './src/context/SearchHistoryContext';
 import { Provider as FavouriteProvider } from './src/context/FavouriteContext';
 
+const SearchStack = createStackNavigator({
+  Search: SearchScreen,
+});
+
+SearchStack.navigationOptions = ({ navigation }) => ({
+  headerRight: () =>
+    <Button
+      title="Favourite"
+      type="clear"
+      titleStyle={{
+        fontSize: 16
+      }}
+      onPress={() => navigation.navigate('Favourite')}
+    />
+});
+
 const navigator = createStackNavigator(
   {
-    Search: SearchScreen,
+    SearchStack,
     SearchResults: SearchResultsScreen,
     MovieDetail: MovieDetailScreen,
     Favourite: FavouriteScreen
   },
   {
-    initialRouteName: 'Search',
-    defaultNavigationOptions: ({ navigation }) => ({
-      title: 'Movies Search',
-      headerRight: () => (
-        <Button
-          title="Favourite"
-          type="clear"
-          titleStyle={{
-            fontSize: 16
-          }}
-          onPress={() => navigation.navigate('Favourite')}
-        />
-      )
+    initialRouteName: 'SearchStack',
+    defaultNavigationOptions: () => ({
+      title: 'Movies Search'
     })
   }
 );
