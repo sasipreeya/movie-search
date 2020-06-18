@@ -1,9 +1,23 @@
 import createDataContext from './createDataContext';
 
+const searchHandler = (state, action) => {
+  if (state != []) {
+    state.map((item) => {
+      if ((item = action.payload)) {
+        state = state.filter(
+          (item) => item !== action.payload
+        );
+      }
+    });
+  }
+  state.push(action.payload);
+  return state;
+};
+
 const searchHistoryReducer = (state, action) => {
   switch (action.type) {
     case 'search_history':
-      return [...state, action.payload];
+      return searchHandler(state, action);
     default:
       return state;
   }
