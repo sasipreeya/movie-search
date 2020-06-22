@@ -15,7 +15,7 @@ const SearchHistoryList = ({ navigation }) => {
   return (
     <>
       {
-        state.map((item, index) => (
+        state.slice(0).reverse().map((item, index) => (
           <ListItem
             key={index}
             title={item}
