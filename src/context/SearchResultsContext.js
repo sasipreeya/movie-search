@@ -10,10 +10,11 @@ const searchResultsReducer = (state, action) => {
   }
 };
 
-const fetchMovies = dispatch => async (searchTerm) => {
+const fetchMovies = dispatch => async (searchTerm, pageNo) => {
   const response = await moviesApi.get('/api/movies/search', {
     params: {
-      query: searchTerm
+      query: searchTerm,
+      page: pageNo
     }
   });
   dispatch({ type: 'search_movies', payload: response.data.results });

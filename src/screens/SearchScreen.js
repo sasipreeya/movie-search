@@ -7,6 +7,7 @@ import { Context as SearchResultsContext } from '../context/SearchResultsContext
 
 const SearchScreen = ({ navigation }) => {
   const [term, setTerm] = useState('');
+  const pageNo = 1;
   const { searchHistory } = useContext(SearchHistoryContext);
   const { fetchMovies } = useContext(SearchResultsContext);
 
@@ -16,10 +17,10 @@ const SearchScreen = ({ navigation }) => {
         term={term}
         onTermChange={setTerm}
         onTermSubmit={() => {
-          fetchMovies(term);
+          fetchMovies(term, pageNo);
           searchHistory(term);
           setTerm('');
-          navigation.navigate('SearchResults');
+          navigation.navigate('SearchResults', { term: term });
         }}
       />
       <SearchHistoryList />

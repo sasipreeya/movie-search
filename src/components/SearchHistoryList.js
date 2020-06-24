@@ -5,6 +5,7 @@ import { Context as SearchResultsContext } from '../context/SearchResultsContext
 import { withNavigation } from 'react-navigation';
 
 const SearchHistoryList = ({ navigation }) => {
+  const pageNo = 1;
   const { state, searchHistory } = useContext(SearchHistoryContext);
   const { fetchMovies } = useContext(SearchResultsContext);
 
@@ -21,9 +22,9 @@ const SearchHistoryList = ({ navigation }) => {
             title={item}
             bottomDivider
             onPress={() => {
-              fetchMovies(item);
+              fetchMovies(item, pageNo);
               searchHistory(item);
-              navigation.navigate('SearchResults');
+              navigation.navigate('SearchResults', { term: item });
             }}
           />
         ))
